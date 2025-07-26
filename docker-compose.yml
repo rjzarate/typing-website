@@ -9,6 +9,7 @@ services:
               source: client-vite/
               target: /usr/src/app/
             - type: volume
+              source: client_vite_node_modules
               target: /usr/src/app/node_modules
         networks:
             - frontend
@@ -19,11 +20,25 @@ services:
         build:
             context: api-django/
         init: true
+        depends_on:
+            - database
         networks:
             - frontend
             - backend
         ports:
             - 8000:8000
+    database:
+        image: postgres:15.1-alpine
+        volumes:
+            - database_data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=password
+        networks:
+            - backend
+        ports:
+            - 5432:5432
 networks:
     frontend:
     backend:
+volumes:
+    database_data:
