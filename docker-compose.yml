@@ -42,3 +42,4 @@ networks:
     backend:
 volumes:
     database_data:
+    client_vite_node_modules:
