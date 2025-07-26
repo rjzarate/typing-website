@@ -1,0 +1,19 @@
+services:
+    client-vite:
+        image: client-vite:dev
+        build:
+            context: client-vite/
+        init: true
+        volumes:
+            - type: bind
+              source: client-vite/
+              target: /usr/src/app/
+            - type: volume
+              target: /usr/src/app/node_modules
+        networks:
+            - frontend
+        ports:
+            - 8080:5173
+networks:
+    frontend:
+    backend:
