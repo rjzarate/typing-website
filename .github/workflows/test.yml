@@ -3,7 +3,8 @@ on:
     push:
 
 jobs:
-    test:
+    # https://github.com/davelosert/vitest-coverage-report-action
+    client-vite:
         runs-on: ubuntu-latest
 
         permissions:
@@ -34,5 +35,5 @@ jobs:
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2
               with:
-                  vite-config-path: ./client-vite/vite.config.ts
+                  vite-config-path: ./vite.config.ts
                   working-directory: ./client-vite
