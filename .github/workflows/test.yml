@@ -25,7 +25,7 @@ jobs:
               working-directory: ./client-vite
 
             - name: "Test"
-              run: npx vitest --coverage.enabled true --config ./client-vite/vitest.config.ts
+              run: npx vitest --coverage.enabled true
               working-directory: ./client-vite
 
             - name: "Report Coverage"
