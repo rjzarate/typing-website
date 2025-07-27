@@ -7,7 +7,7 @@ services:
             database:
                 condition: service_healthy
         volumes:
-            - ./coverage:/app/coverage
+            - ./reports:/app/reports
         networks:
             - backend
         command: >
