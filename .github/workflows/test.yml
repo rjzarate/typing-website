@@ -45,9 +45,7 @@ jobs:
               run: |
                   docker compose -f docker-compose-test.yml up --build --abort-on-container-exit
                   docker compose -f docker-compose-test.yml down -v
-
-            - name: Upload coverage report
-              uses: actions/upload-artifact@v4
+            - name: Code Coverage Report Action
+              uses: insightsengineering/coverage-action@v3.0.1
               with:
-                  name: coverage-report
                   path: ./reports/coverage.xml
