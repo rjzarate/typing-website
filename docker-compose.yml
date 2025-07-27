@@ -20,6 +20,10 @@ services:
         build:
             context: api-django/
         init: true
+        volumes:
+            - type: bind
+              source: api-django/
+              target: /app/
         depends_on:
             - database
         networks:
