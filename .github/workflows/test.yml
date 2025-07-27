@@ -51,4 +51,6 @@ jobs:
                   paths: reports/pytest.xml
               if: always()
             - name: Coverage Summary
-              run: cat reports/pytest-coverage.txt >> $GITHUB_STEP_SUMMARY
+              uses: orgoro/coverage@v3.2
+              with:
+                  coverageFile: reports/pytest-coverage.xml
