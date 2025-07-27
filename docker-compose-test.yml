@@ -6,6 +6,8 @@ services:
         depends_on:
             database:
                 condition: service_healthy
+        volumes:
+            - ./coverage:/app/coverage
         networks:
             - backend
         command: >
