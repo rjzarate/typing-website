@@ -8,3 +8,6 @@ def test_request(request):
 
     foos = Foo.objects.all().values()  # returns a queryset of dictionaries
     return JsonResponse(list(foos), safe=False)
+
+def other_test_request(request):
+    pass

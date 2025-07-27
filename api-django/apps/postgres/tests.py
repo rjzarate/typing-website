@@ -1,9 +1,6 @@
 import pytest
-from django.urls import reverse
 from django.test import Client
 from apps.postgres.models import Foo
-from django.core.management import call_command
-from django.db import connection
 
 @pytest.mark.django_db
 def test_model_foo():
@@ -26,6 +23,7 @@ def create_foos():
 
 @pytest.mark.django_db
 def test_get_all_foos(client, create_foos):
+    # Tests test_request & /postgres/test/
     response = client.get("/postgres/test/")
     assert response.status_code == 200
 
