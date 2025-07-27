@@ -25,7 +25,7 @@ jobs:
               working-directory: ./client-vite
 
             - name: "Test"
-              run: npx vitest --coverage.enabled true
+              run: npx vitest --coverage.enabled true --config ./client-vite/vitest.config.ts
               working-directory: ./client-vite
 
             - name: "Report Coverage"
@@ -34,4 +34,5 @@ jobs:
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2
               with:
-                  vite-config-path: ./client-vite
+                  vite-config-path: ./client-vite/vite.config.ts
+                  working-directory: ./client-vite
