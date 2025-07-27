@@ -14,16 +14,16 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
-            - name: "Move to client-vite folder"
-              run: cd client-vite
             - name: "Install Node"
               uses: actions/setup-node@v4
               with:
                   node-version: "20.x"
             - name: "Install Deps"
               run: npm install
+              working-directory: ./client-vite
             - name: "Test"
               run: npx vitest --coverage.enabled true
+              working-directory: ./client-vite
             - name: "Report Coverage"
               # Set if: always() to also generate the report if tests are failing
               # Only works if you set `reportOnFailure: true` in your vite config as specified above
