@@ -1,0 +1,42 @@
+services:
+    api-django:
+        build:
+            context: api-django/
+        image: api-django:test
+        depends_on:
+            database:
+                condition: service_healthy
+        networks:
+            - backend
+        command: >
+            sh -c "
+            python manage.py migrate &&
+            python manage.py test
+            "
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test
+            DATABASE_HOST: database
+            DATABASE_PORT: 5432
+        ports:
+            - "8000:8000"
+        # No volumes, so code is baked into the image for test consistency
+
+    database:
+        image: postgres:15.1-alpine
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: test
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+        networks:
+            - backend
+        # No volume mounted - fresh DB every test run for clean state
+
+networks:
+    backend:
