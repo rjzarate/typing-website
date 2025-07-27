@@ -11,7 +11,7 @@ services:
         networks:
             - backend
         command: >
-            pytest
+            sh -c "mkdir -p reports && pytest | tee reports/pytest-coverage.txt"
         ports:
             - "8000:8000"
         # No volumes, so code is baked into the image for test consistency
