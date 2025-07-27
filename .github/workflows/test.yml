@@ -48,5 +48,5 @@ jobs:
             - name: Pytest Coverage Test Summary
               uses: test-summary/action@v2
               with:
-                  paths: ./reports/coverage.xml
+                  paths: reports/coverage.xml
               if: always()
