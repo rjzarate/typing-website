@@ -35,5 +35,4 @@ jobs:
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2
               with:
-                  vite-config-path: ./vite.config.ts
                   working-directory: ./client-vite
