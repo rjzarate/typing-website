@@ -1,6 +1,9 @@
 name: "Testing"
 on:
-    push:
+    pull_request:
+        branches:
+            - main
+            - develop
 
 jobs:
     # https://github.com/davelosert/vitest-coverage-report-action
